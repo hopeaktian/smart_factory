@@ -6,4 +6,4 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:@120.79.139.82:3306/smart_factory"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:Yourpassword@120.79.139.82:3306/smart_factory"
