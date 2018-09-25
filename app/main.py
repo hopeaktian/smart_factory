@@ -5,25 +5,18 @@ from config import DevConfig
 from werkzeug.utils import secure_filename
 
 # from flask_sqlalchemy import SQLAlchemy
-# import models
+from models import db
 # from sqlalchemy.sql.expression import not_, or_
-
-from flask_wtf import Form
-from wtforms import StringField, TextAreaField, SelectField, IntegerField, SubmitField
-from wtforms.validators import DataRequired, Length, Email
-from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 app.config.from_object(DevConfig)
 
-# db = SQLAlchemy(app)
+db.init_app(app)
+
 
 # 自定义jinja过滤器
 def time_format(l):
     return str(l)[:-7]
 app.add_template_filter(time_format, 'format_time')
-
-
-#bootstrap = Bootstrap(app)
 
 # UPLOAD_FOLDER = "./static/Upload_File/"
 # ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -49,6 +42,9 @@ def index():
         user = User.query.filter_by(Username=session['username']).first()
         return render_template('index.html', title=u'智慧工厂', userlogin_name=session['username'], user=user)
     return render_template('index.html', title=u"智慧工厂")
+@app.route('/phone')
+def phone():
+    return render_template('phone.html')
 
 # @app.route('/MP_verify_FcIWodemzDz6J6Op.txt')
 # def weixin():

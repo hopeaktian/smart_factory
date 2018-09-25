@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/app/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/app/static/css/mycss.css">
+    <title>手机显示</title>
+    <style>
+        body{font-size:100%%;font-family: "Microsoft YaHei UI Light", Arial;
+            overflow-x: hidden;
+            overflow-y: auto;}
+        .viewport{max-width: 640px;
+            min-width:300px;
+            margin:0 auto;}
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: grey">
+        <h1>智慧工厂</h1>
+    </div>
+{#    <nav class="navbar navbar-default navbar-fixed-bottom" style="margin-bottom: -10px">#}
+{#        <div class="container">#}
+{#            <ul class="nav nav-tabs" >#}
+{#                <div class="col-xs-3" style="text-align: center">#}
+{#                    <li role="presentation" class=""><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true" style="font-size: 35px"></span></a></li>#}
+{#                </div>#}
+{#                <div class="col-xs-3" style="text-align: center">#}
+{#                    <li role="presentation" class=""><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>#}
+{#                </div>#}
+{#                <div class="col-xs-3" style="text-align: center">#}
+{#                    <li role="presentation" class=""><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>#}
+{#                </div>#}
+{#                <div class="col-xs-3" style="text-align: center">#}
+{#                    <li role="presentation" class=""><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>#}
+{#                </div>#}
+{##}
+{#            </ul>#}
+{#        </div>#}
+{#    </nav>#}
+
+    <ul class="nav nav-pills navcontext" id="nav-pills">
+{#        <li class="active" name="nav-list"><a href="#" urltag="welcomepage.html">欢迎页</a></li>#}
+{#        <li class="noactive" name="nav-list"><a href="#" urltag="loginNavigation.html">我的属性</a></li>#}
+        <li class="noactive" name="nav-list"><a href="#" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+        <li class="noactive" name="nav-list"><a href="#" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+        <li class="noactive" name="nav-list"><a href="#" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+        …………
+    </ul>
+
+
+    <script>
+        // 绑定列表点击事件，点击后会传递event
+        var navList = document.getElementById('nav-pills');
+        if (navList) {
+            navList.addEventListener('click', listSelect, false);
+        };
+        // 点击导航栏，激活+变色相应的li
+        function listSelect(event) {
+            var SELECTED = 'active'; //class='active';
+            var UNSELECTED = 'noactive';
+            var activeT = selectedlist(); // 查找激活状态对象
+            var selectT = event.target.parentNode; // click事件对象  这里用了parentNode，因为选中到的是<a>元素，而需要处理的是父节点<li>
+
+            function setStatus(T) {
+                var activeFlag = T.getAttribute('class');
+                if (activeFlag == UNSELECTED) {
+                    T.setAttribute('class', SELECTED);
+                } else {
+                    T.setAttribute('class', UNSELECTED);
+                };
+            }
+
+            function selectedlist() {
+                var listitem = document.querySelectorAll("li[name]");    // 查找所有有name属性的li
+                for (var i = 0; i < listitem.length; i++) {
+                    if (listitem[i].className == SELECTED) {
+                        return listitem[i];
+                    };
+                };
+            }
+
+            if (activeT) { // 存在已激活的list，处理该list与选中的list
+                setStatus(activeT);
+                setStatus(selectT);
+            } else { // 不存在激活状态的list，只需要处理click对象即可
+                setStatus(selectT);
+            };
+        }
+
+    </script>
+
+</body>
+</html>
