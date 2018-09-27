@@ -11,7 +11,7 @@ class User(db.Model):
     Password = db.Column(db.String(255))
     Name = db.Column(db.String(255))
     Gender = db.Column(db.Integer())
-    Age = db.Column(db.Integer())
+    Birth = db.Column(db.Integer())
     Position = db.Column(db.Integer())
     Email = db.Column(db.String(255))
     Tel_Number = db.Column(db.String(255))
@@ -36,6 +36,6 @@ class Mession(db.Model):
     Maker_Id = db.Column(db.Integer(), db.ForeignKey('User.Id'), nullable=False)         # 发单用户的Id
     Worker_Id = db.Column(db.Integer(), db.ForeignKey('User.Id'))                          # 接单用户的Id
 
-    Maker = db.relationship('User', foreign_keys='Order.Maker_Id')
-    Worker = db.relationship('User', foreign_keys='Order.Worker_Id')
+    Maker = db.relationship('User', foreign_keys='Mession.Maker_Id')
+    Worker = db.relationship('User', foreign_keys='Mession.Worker_Id')
 

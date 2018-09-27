@@ -40,8 +40,8 @@ def index():
     if 'username' in session:
         global user
         user = User.query.filter_by(Username=session['username']).first()
-        return render_template('index.html', title=u'智慧工厂', userlogin_name=session['username'], user=user)
-    return render_template('index.html', title=u"智慧工厂")
+        return render_template('user.html', title=u'智慧工厂', userlogin_name=session['username'], user=user)
+    return render_template('user.html', title=u"智慧工厂")
 @app.route('/phone')
 def phone():
     return render_template('phone.html')
@@ -134,7 +134,7 @@ def phone():
 # @app.route('/logout', methods=['GET', 'POST'])
 # def logout():
 #     session.pop('username', None)
-#     return redirect(url_for('index'))
+#     return redirect(url_for('user'))
 #
 # @app.route('/register', methods=['GET', 'POST'])
 # def register():
@@ -208,7 +208,7 @@ def phone():
 #
 #         file = request.files['inputFile']
 #         filename = file.filename
-#         index_point = filename.index(".")
+#         index_point = filename.user(".")
 #         filename = str(new_order.Id)+filename[index_point:]
 #         basepath = os.path.dirname(__file__)
 #         upload_path = os.path.join(basepath, 'static/Upload_File', secure_filename(filename))
