@@ -3,7 +3,6 @@ from flask_script import Manager, Server
 from app import app
 from app.models import db, User, Mession
 
-from flask_sqlalchemy import SQLAlchemy
 manager = Manager(app)
 manager.add_command("server", Server())
 

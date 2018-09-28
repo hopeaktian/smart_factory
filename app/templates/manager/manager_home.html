@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block css %}
+    <style>
+        .side-bar .list-group-item {
+            border:0;
+            border-radius: 3px;
+            margin-bottom: 5px;
+        }
+{#        .list-group-item.active{#}
+{#            background-color: #6d716dc7;#}
+{#        }#}
+        a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, button.list-group-item:hover {
+            color: #555;
+            text-decoration: none;
+            background-color: #becebec7;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="row" style="background-color: grey">
+    <div class="col-md-2" >
+        <div class="list-group side-bar">
+            <a href="#" class="list-group-item active">管理主页</a>
+            <a href="/manager/{{ g.current_user.Id }}/new_mession" class="list-group-item">创建工单</a>
+            <a href="/manager/{{ g.current_user.Id }}/edit_mession" class="list-group-item">修改工单</a>
+            <a href="/manager/{{ g.current_user.Id }}/status_mession" class="list-group-item">查看任务进度</a>
+            <a href="#" class="list-group-item">工人管理</a>
+        </div>
+    </div>
+
+    <div class="col-md-10">
+        {% block manager_content %}
+            <h1>hello world</h1>
+        {% endblock manager_content %}
+    </div>
+
+</div>
+
+
+{% endblock %}

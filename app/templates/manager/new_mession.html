@@ -1,0 +1,92 @@
+{% extends 'manager_home.html' %}
+{% block manager_content %}
+
+        <div class="container-fluid" style="background-color: #373d41; background-image:url(); background-size:100% 100%">
+            <form enctype='multipart/form-data' method="post" novalidate>
+                <br>
+                <br>
+                <div class="container" >
+                    <div class="heading" style="margin-bottom: -19px">
+                        <header class="text-uppercase" style="font-weight: bolder; font-size: 27px; color: #09a0ba">填写工单信息:</header>
+                    </div>
+                    <hr>
+                    <div class="comment-post well" style="height: auto; width: auto; background-color: #f5f5f5e8">
+                        <div class="row">
+
+                            <div class="col-sm-1">
+                                <img src="http://i.bootstrapmb.com/noavatar.gif" style="height: 30px; width: 30px;">
+                            </div>
+
+
+
+                            <div class="col-sm-11" >
+                                <label style="color: red">*</label>
+                                <input type="text" name="title" placeholder="任务标题" required="required" style="height: 34px; width: 40%;">
+                            </div>
+
+
+                        </div>
+                        <br>
+
+                        {#截至时间#}
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-1">
+                                <label style="color: red">*</label>
+                                <input type="datetime-local" value="{{ now_time }}" name="diedate" required="required" style="width: 75%; height: 40px;">
+                            </div>
+                            <div class=" col-sm-3 col-sm-offset-1">
+                                <label style="margin-left: -120px; color: green">设置任务截止完成时间</label>
+                            </div>
+                        </div>
+{#                        选择工人#}
+                        <div class="col-sm-5 col-sm-offset-1">
+                            <div class="form-group ">
+                                <select name="position" class="table-responsive">
+                                    <option>--请选择工人--</option>
+                                    <option value="1">管理员</option>
+                                    <option value="2">部门一</option>
+                                    <option value="3">部门二</option>
+                                    <option value="4">部门三</option>
+                                    <option value="5">部门四</option>
+                                </select>
+                            </div>
+                        </div>
+                        {#任务详情表单#}
+                        <br>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="cmtcontainer col-sm-10 col-sm-offset-1" >
+                                <label style="color: red">*</label>
+                                <textarea name="detials" placeholder="任务详情描述，请仔细描述您所要发布任务的内容" required="required" style="width: 80%; height: 101px; resize: none"></textarea>
+                            </div>
+                        </div>
+
+                        {#上传图片#}
+
+                        <div class="row">
+                            <div class="col-sm-12 col-sm-offset-1">
+                                <label class="col-sm-2" for="profile_pic" style="color: green"><label style="color: blue;">(选填)</label></label>
+                                <input class="col-lg-3" type="file" id="inputFile" name="inputFile"  />
+                                <label class="col-sm-4" for="profile_pic" style="color: green"><label style="color: blue;"></label>上传描述图片</label>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-sm-1 col-sm-offset-8">
+                                <button type="submit" class="btn btn-primary">提交订单</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+
+{% endblock manager_content %}

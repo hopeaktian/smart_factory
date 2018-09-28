@@ -2,7 +2,7 @@
 #coding:utf-8
 
 from os import path
-from flask import Flask, Blueprint, render_template, request, flash, session, redirect, url_for
+from flask import Flask, Blueprint, render_template, request, flash, session, redirect, url_for, g
 import datetime, os, time
 from sqlalchemy.sql.expression import not_, or_
 from app.models import User, Mession
@@ -77,13 +77,15 @@ def login():
             flash(u'登陆成功', category="success")
             session['user_id'] = user.Id
 
-            return redirect('/')
+            return redirect(url_for('manager.Manager', id=user.Id))
 
         else:
             flash(u'用户名或密码错误！', category="danger")
             # status = 0
             return  render_template('login.html')
     return render_template('login.html', title=u"登陆")
+
+
 
 @user.route('/logout', methods=['GET', 'POST'])
 def logout():

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask_sqlalchemy import SQLAlchemy
 import datetime, os, time
+
 #数据模型部分
 db = SQLAlchemy()
 

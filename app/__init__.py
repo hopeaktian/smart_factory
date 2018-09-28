@@ -5,6 +5,7 @@ from config import DevConfig
 # from models import db
 from app.models import User, db
 from controllers.user import user
+from controllers.manager import manager
 import datetime
 
 app = Flask(__name__)
@@ -23,7 +24,6 @@ def index():
 def check_user():
     if 'user_id' in session:
         g.current_user = User.query.filter_by(Id=session['user_id']).one()
-        print g.current_user
 
     else:
         g.current_user = None
@@ -31,6 +31,7 @@ def check_user():
 
 
 app.register_blueprint(user)
+app.register_blueprint(manager)
 
 if __name__ == '__main__':
     app.run('localhost', 80)
